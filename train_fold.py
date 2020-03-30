@@ -131,7 +131,7 @@ def main():
         # loss = criterion(output, target, args.eps,args.weight_type)
         # loss = criterion(output, target,args.alpha,args.gamma) # for focal loss
         loss = criterion(output, target, *args.kwargs)
-
+        
         # measure accuracy and record loss
         losses.update(loss.item(), target.numel())
 

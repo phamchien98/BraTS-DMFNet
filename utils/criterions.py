@@ -2,9 +2,9 @@ import torch.nn.functional as F
 import torch
 import logging
 import torch.nn as nn
+from utils.boundary_loss import myloss
 
-
-__all__ = ['sigmoid_dice_loss','softmax_dice_loss','GeneralizedDiceLoss','FocalLoss']
+__all__ = ['sigmoid_dice_loss','softmax_dice_loss','GeneralizedDiceLoss','FocalLoss',"myloss"]
 
 cross_entropy = F.cross_entropy
 

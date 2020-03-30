@@ -134,6 +134,7 @@ class Parser(AttrDict):
 
     def makedir(self):
         checkpoint_dir = self.getdir()
+        checkpoint_dir = "/content/gdrive/My Drive/Colab Notebooks/ky8_AI/BrainTumorSegmentation_thaysang/checkpoint"
         if not os.path.exists(checkpoint_dir):
             os.makedirs(checkpoint_dir)
 

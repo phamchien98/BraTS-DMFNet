@@ -56,7 +56,9 @@ def main():
     model = torch.nn.DataParallel(model).cuda()
 
     optimizer = getattr(torch.optim, args.opt)(model.parameters(), **args.opt_params)
+    print(args.criterion)
     criterion = getattr(criterions, args.criterion)
+
 
     msg = ''
     if args.resume:
@@ -101,7 +103,7 @@ def main():
     torch.set_grad_enabled(True)
 
     for i, data in enumerate(train_loader, args.start_iter):
-
+        
         elapsed_bsize = int( i / enum_batches)+1
         epoch = int((i + 1) / enum_batches)
         setproctitle.setproctitle("Epoch:{}/{}".format(elapsed_bsize,args.num_epochs))
@@ -121,7 +123,11 @@ def main():
             loss = criterion(output, target, **args.criterion_kwargs)
         else:
             loss = criterion(output, target)
-
+        print(type(output),output.shape,output[:,0,0,0,0])
+        print("=======")
+        print(type(target),target.shape,target[:,0,0,0])
+        print(loss)
+        1/0
         # measure accuracy and record loss
         losses.update(loss.item(), target.numel())
 
