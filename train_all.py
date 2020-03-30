@@ -56,8 +56,9 @@ def main():
     model = torch.nn.DataParallel(model).cuda()
 
     optimizer = getattr(torch.optim, args.opt)(model.parameters(), **args.opt_params)
-    print(args.criterion)
-    criterion = getattr(criterions, args.criterion)
+    print(args.criterion) 
+    args.criterion = "myloss"
+    criterion = getattr(criterions, args.criterion) 
 
 
     msg = ''
